@@ -4,7 +4,7 @@ Original Challenge, Bonus 1
 input:
     queue (array of integers),
     num_taps (integer)
-output: result (integer)
+output: result (float)
 
 assumptions: 
     each tap flows at a rate of 100ml per second,
@@ -25,19 +25,19 @@ def calculate_time_1(queue: list, num_taps: int) -> float:
         raise Exception(
             'Invalid argument. "num_taps" should be an integer over 0.')
     # move someone to each tap
-    time = []
+    taps = []
     for _ in range(num_taps):
         if len(queue) > 0:
-            time.append(queue.pop(0))
+            taps.append(queue.pop(0))
         else:
-            time.append(0)
+            taps.append(0)
     # move rest of the queue to the next available tap
     for _ in range(len(queue)):
-        min_index = time.index(min(time))
-        time[min_index] += queue.pop(0)
+        min_index = taps.index(min(taps))
+        taps[min_index] += queue.pop(0)
     # get max time and convert to seconds
-    result = max(time) / 100
-    return f'{result} seconds'
+    result = max(taps) / 100
+    return f'{result:.2f} seconds'
 
 
 '''
@@ -47,7 +47,7 @@ input:
     queue (array of integers),
     num_taps (integer),
     walking_time (integer)
-output: result (integer)
+output: result (float)
 
 assumptions: 
     each tap flows at a rate of 100ml per second,
@@ -71,20 +71,20 @@ def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> float:
         raise Exception(
             'Invalid argument. "walking_time" should be an integer over 0.')
     # move someone to each tap
-    time = []
+    taps = []
     walking_time *= 100
     for _ in range(num_taps):
         if len(queue) > 0:
-            time.append(walking_time + queue.pop(0))
+            taps.append(walking_time + queue.pop(0))
         else:
-            time.append(0)
+            taps.append(0)
     # move rest of the queue to the next available tap
     for _ in range(len(queue)):
-        min_index = time.index(min(time))
-        time[min_index] += walking_time + queue.pop(0)
+        min_index = taps.index(min(taps))
+        taps[min_index] += walking_time + queue.pop(0)
     # get max time and convert to seconds
-    result = max(time) / 100
-    return f'{result} seconds'
+    result = max(taps) / 100
+    return f'{result:.2f} seconds'
 
 
 '''
@@ -95,7 +95,7 @@ input:
     num_taps (integer),
     walking_time (integer),
     flow_rate (array of integers)
-output: result (integer)
+output: result (float)
 
 assumption: 
     it takes the same amount of time to walk to each tap,
@@ -129,21 +129,21 @@ def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: l
         raise Exception(
             'Length of "flow_rate" array must equal "num_taps". Pass in the "flow_rate" for each tap.')
     # move someone to each tap
-    time = []
+    taps = []
     walking_time *= 100
     for i in range(num_taps):
         if len(queue) > 0:
-            time.append(walking_time + (queue.pop(0) * (100 / flow_rate[i])))
+            taps.append(walking_time + (queue.pop(0) * (100 / flow_rate[i])))
         else:
-            time.append(0)
+            taps.append(0)
     # move rest of the queue to the next available tap
     for _ in range(len(queue)):
-        min_index = time.index(min(time))
-        time[min_index] += walking_time + \
+        min_index = taps.index(min(taps))
+        taps[min_index] += walking_time + \
             (queue.pop(0) * (100 / flow_rate[min_index]))
     # get max time and convert to seconds
-    result = max(time) / 100
-    return f'{result} seconds'
+    result = max(taps) / 100
+    return f'{result:.2f} seconds'
 
 
 print(calculate_time_1([200, 400, 600, 800, 1000], 3))
