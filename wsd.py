@@ -4,15 +4,15 @@ Original Challenge and Bonus 1
 input:
     queue (array of integers),
     num_taps (integer)
-output: result (float)
+output: result (int)
 
 assumptions: 
     each tap flows at a rate of 100ml per second,
-    no time is taken to reach a tap
+    you can start filling your bottle as soon as a tap is available
 '''
 
 
-def calculate_time_1(queue: list, num_taps: int) -> float:
+def calculate_time_1(queue: list, num_taps: int) -> int:
     # validate input
     if type(queue) != list:
         raise TypeError('Invalid argument. "queue" should be a list.')
@@ -36,7 +36,7 @@ def calculate_time_1(queue: list, num_taps: int) -> float:
         min_index = time.index(min(time))
         time[min_index] += queue.pop(0)
     # get max time and convert to seconds
-    result = max(time) / 100
+    result = int(max(time) / 100)
     return f'{result} seconds'
 
 
@@ -47,7 +47,7 @@ input:
     queue (array of integers),
     num_taps (integer),
     walking_time (integer)
-output: result (float)
+output: result (int)
 
 assumptions: 
     each tap flows at a rate of 100ml per second,
@@ -55,7 +55,7 @@ assumptions:
 '''
 
 
-def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> float:
+def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> int:
     # validate input
     if type(queue) != list:
         raise TypeError('Invalid argument. "queue" should be a list.')
@@ -83,7 +83,7 @@ def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> float:
         min_index = time.index(min(time))
         time[min_index] += walking_time + queue.pop(0)
     # get max time and convert to seconds
-    result = max(time) / 100
+    result = int(max(time) / 100)
     return f'{result} seconds'
 
 
@@ -95,13 +95,13 @@ input:
     num_taps (integer),
     walking_time (integer),
     flow_rate (array of integers)
-output: result (float)
+output: result (int)
 
 assumption: it takes the same amount of time to walk to each tap
 '''
 
 
-def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: list) -> float:
+def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: list) -> int:
     # validate input
     if type(queue) != list:
         raise TypeError('Invalid argument. "queue" should be a list.')
@@ -140,7 +140,7 @@ def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: l
         time[min_index] += walking_time + \
             (queue.pop(0) * (100 / flow_rate[min_index]))
     # get max time and convert to seconds
-    result = max(time) / 100
+    result = int(max(time) / 100)
     return f'{result} seconds'
 
 
