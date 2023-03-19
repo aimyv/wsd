@@ -171,5 +171,5 @@ print(calculate_time_3([400, 800, 1000, 600, 200], 3, 2, [50, 100, 200]))
 '''
 Bonus 4
 
-No. A faster tap means that it takes less time to fill up a water bottle. Walking time and the amount of water in each bottle are fixed. Flow rate and time are reciprocal so if you increase the flow rate of a specific tap, the time taken to fill a bottle at that tap decreases.
+No. A faster tap means that it takes less time to fill up a water bottle. Walking time and the amount of water in each bottle are fixed. Flow rate and time are reciprocal so if you increase the flow rate of a specific tap, the time taken to fill a bottle at that tap decreases. As flow rate tends to infinity, time tends to zero.
 '''
