@@ -1,10 +1,10 @@
 '''
-Original Challenge and Bonus 1
+Original Challenge, Bonus 1
 
 input:
     queue (array of integers),
     num_taps (integer)
-output: result (int)
+output: result (integer)
 
 assumptions: 
     each tap flows at a rate of 100ml per second,
@@ -12,7 +12,7 @@ assumptions:
 '''
 
 
-def calculate_time_1(queue: list, num_taps: int) -> int:
+def calculate_time_1(queue: list, num_taps: int) -> float:
     # validate input
     if type(queue) != list:
         raise TypeError('Invalid argument. "queue" should be a list.')
@@ -31,23 +31,23 @@ def calculate_time_1(queue: list, num_taps: int) -> int:
             time.append(queue.pop(0))
         else:
             time.append(0)
-    # move rest of the queue to the tap that finishes first
+    # move rest of the queue to the next available tap
     for _ in range(len(queue)):
         min_index = time.index(min(time))
         time[min_index] += queue.pop(0)
     # get max time and convert to seconds
-    result = int(max(time) / 100)
+    result = max(time) / 100
     return f'{result} seconds'
 
 
 '''
-Bonus 1 and Bonus 2
+Bonus 1, Bonus 2
 
 input:
     queue (array of integers),
     num_taps (integer),
     walking_time (integer)
-output: result (int)
+output: result (integer)
 
 assumptions: 
     each tap flows at a rate of 100ml per second,
@@ -55,7 +55,7 @@ assumptions:
 '''
 
 
-def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> int:
+def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> float:
     # validate input
     if type(queue) != list:
         raise TypeError('Invalid argument. "queue" should be a list.')
@@ -78,30 +78,30 @@ def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> int:
             time.append(walking_time + queue.pop(0))
         else:
             time.append(0)
-    # move rest of the queue to the tap that finishes first
+    # move rest of the queue to the next available tap
     for _ in range(len(queue)):
         min_index = time.index(min(time))
         time[min_index] += walking_time + queue.pop(0)
     # get max time and convert to seconds
-    result = int(max(time) / 100)
+    result = max(time) / 100
     return f'{result} seconds'
 
 
 '''
-Bonus 1 and Bonus 3
+Bonus 1, Bonus 3
 
 input:
     queue (array of integers),
     num_taps (integer),
     walking_time (integer),
     flow_rate (array of integers)
-output: result (int)
+output: result (integer)
 
 assumption: it takes the same amount of time to walk to each tap
 '''
 
 
-def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: list) -> int:
+def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: list) -> float:
     # validate input
     if type(queue) != list:
         raise TypeError('Invalid argument. "queue" should be a list.')
@@ -134,13 +134,13 @@ def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: l
             time.append(walking_time + (queue.pop(0) * (100 / flow_rate[i])))
         else:
             time.append(0)
-    # move rest of the queue to the tap that finishes first
+    # move rest of the queue to the next available tap
     for _ in range(len(queue)):
         min_index = time.index(min(time))
         time[min_index] += walking_time + \
             (queue.pop(0) * (100 / flow_rate[min_index]))
     # get max time and convert to seconds
-    result = int(max(time) / 100)
+    result = max(time) / 100
     return f'{result} seconds'
 
 
@@ -171,5 +171,5 @@ print(calculate_time_3([400, 800, 1000, 600, 200], 3, 2, [50, 100, 200]))
 '''
 Bonus 4
 
-No - bigger flow rate means reduced time taken to fill the bottle
+No. A faster tap means that it takes less time to fill up a water bottle. Walking time and the amount of water in each bottle are fixed. Flow rate and time are reciprocal so if you increase the flow rate of a specific tap, the time taken to fill a bottle at that tap decreases.
 '''
