@@ -97,7 +97,9 @@ input:
     flow_rate (array of integers)
 output: result (integer)
 
-assumption: it takes the same amount of time to walk to each tap
+assumption: 
+    it takes the same amount of time to walk to each tap,
+    people don't know the flow rate of each tap at first glance so they can't choose a faster tap if there are two taps available at the same time
 '''
 
 
