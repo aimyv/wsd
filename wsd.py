@@ -66,7 +66,7 @@ def calculate_time_2(queue: list, num_taps: int, walking_time: int) -> float:
                     'Invalid argument. "queue" should be a list of integers over 0.')
     if type(num_taps) != int or num_taps <= 0:
         raise Exception(
-            'Invalid argument. "taps" should be an integer over 0.')
+            'Invalid argument. "num_taps" should be an integer over 0.')
     if type(walking_time) != int or walking_time <= 0:
         raise Exception(
             'Invalid argument. "walking_time" should be an integer over 0.')
@@ -146,29 +146,10 @@ def calculate_time_3(queue: list, num_taps: int, walking_time: int, flow_rate: l
     return f'{result:.2f} seconds'
 
 
+# example
 print(calculate_time_1([200, 400, 600, 800, 1000], 3))
 print(calculate_time_2([200, 400, 600, 800, 1000], 3, 2))
 print(calculate_time_3([200, 400, 600, 800, 1000], 3, 2, [50, 100, 200]))
-print('-------------')
-print(calculate_time_1([800, 400, 600, 200, 1000], 3))
-print(calculate_time_2([800, 400, 600, 200, 1000], 3, 2))
-print(calculate_time_3([800, 400, 600, 200, 1000], 3, 2, [50, 100, 200]))
-print('-------------')
-print(calculate_time_1([1000, 400, 800, 200, 600], 3))
-print(calculate_time_2([1000, 400, 800, 200, 600], 3, 2))
-print(calculate_time_3([1000, 400, 800, 200, 600], 3, 2, [50, 100, 200]))
-print('-------------')
-print(calculate_time_1([600, 800, 400, 1000, 200], 3))
-print(calculate_time_2([600, 800, 400, 1000, 200], 3, 2))
-print(calculate_time_3([600, 800, 400, 1000, 200], 3, 2, [50, 100, 200]))
-print('-------------')
-print(calculate_time_1([600, 200, 1000, 400, 800], 3))
-print(calculate_time_2([600, 200, 1000, 400, 800], 3, 2))
-print(calculate_time_3([600, 200, 1000, 400, 800], 3, 2, [50, 100, 200]))
-print('-------------')
-print(calculate_time_1([400, 800, 1000, 600, 200], 3))
-print(calculate_time_2([400, 800, 1000, 600, 200], 3, 2))
-print(calculate_time_3([400, 800, 1000, 600, 200], 3, 2, [50, 100, 200]))
 
 '''
 Bonus 4
